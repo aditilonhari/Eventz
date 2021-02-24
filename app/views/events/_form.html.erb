@@ -1,0 +1,32 @@
+<%= form_with(model: event, local: true) do |form_builder| %>
+
+  <%= render "shared/errors", object: event %>
+
+  <%= form_builder.label :name %>
+  <%= form_builder.text_field :name, autofocus: true %>
+
+  <%= form_builder.label :description %>
+  <%= form_builder.text_area :description, rows: 5 %>
+
+  <%= form_builder.label :location %>
+  <%= form_builder.text_field :location %>
+
+  <%= form_builder.label :price %>
+  <%= form_builder.number_field :price %>
+
+  <%= form_builder.label :starts_at %>
+  <%= form_builder.datetime_select :starts_at, {ampm: true}, {class: "datetime"} %>
+
+  <%= form_builder.label :capacity %>
+  <%= form_builder.number_field :capacity %>
+
+  <%= form_builder.label :image_file_name %>
+  <%= form_builder.text_field :image_file_name %>
+
+  <%= form_builder.label :category %>
+  <div class="checkboxes">
+    <%= form_builder.collection_check_boxes(:category_ids, Category.all, :id, :name) %>
+  </div>
+
+  <%= form_builder.submit %>
+<% end %>

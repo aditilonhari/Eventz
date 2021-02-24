@@ -1,0 +1,24 @@
+<%= form_with(model: user, local: true) do |form_builder| %>
+
+  <%= render "shared/errors", object: user %>
+
+  <%= form_builder.label :name %>
+  <%= form_builder.text_field :name, autofocus: true %>
+
+  <%= form_builder.label :email %>
+  <%= form_builder.email_field :email %>
+
+  <%= form_builder.label :password %>
+  <%= form_builder.password_field :password %>
+
+  <%= form_builder.label :password_confirmation, "Confirm Password" %>
+  <%= form_builder.password_field :password_confirmation %>
+
+  <% if user.new_record? %>
+    <%= form_builder.submit "Create Account"%>
+  <% else %>
+    <%= form_builder.submit "Update Account" %>
+  <% end %>
+
+
+<% end %>
